@@ -50,3 +50,19 @@ The button that opens the viewer needs to pass the details to the child componen
                   >
                   </lightning-button>
 ```
+
+Handler in the Parent component to set properties to be passed can look like this:
+```js
+  //Handler to render the PDF viewer
+  handleViewPageClick(event) {
+    const page = event.target.dataset.page;
+    const fileId = event.target.dataset.fileid;
+
+    // set properties for child component:
+    this.selectedFileId = fileId;
+    this.selectedPageNumber = page;
+
+    // Set boolean to true for conditional rendering:
+    this.showPdfViewer = true;
+  }
+```
