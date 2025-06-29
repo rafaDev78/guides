@@ -1,0 +1,23 @@
+<template>
+  <lightning-card icon-name="standard:pdf_ext">
+    <lightning-button-icon
+      icon-name="utility:close"
+      variant="border-filled"
+      slot="actions"
+      alternative-text="Close Viewer"
+      title="Close Viewer"
+      onclick={handleCloseClick}
+    >
+    </lightning-button-icon>
+
+    <template if:true={pdfUrl}>
+      <iframe src={pdfUrl} width="100%" height="950px"> </iframe>
+    </template>
+    <template if:false={pdfUrl}>
+      <lightning-spinner
+        alternative-text="Loading..."
+        size="medium"
+      ></lightning-spinner>
+    </template>
+  </lightning-card>
+</template>
