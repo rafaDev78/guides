@@ -54,14 +54,21 @@ public with sharing class QueryRetrieverAction {
 
     // Getting Cases within SF with Sharing settings to respect User permissions.
 
-    List<Case> secureCases = new List<Case>();
+    List<Case> potentialCases = new List<Case>();
     if (!idsToQuery.isEmpty()) {
-      secureCases = [
+      potentialCases = [
         SELECT Id, CaseNumber, Subject, Status, Priority, CreatedDate
         FROM Case
         WHERE Id IN :idsToQuery
       ];
     }
+
+      SObjectAccessDecision decision = Security.stripInaccessible(
+        AccessType.READABLE,
+        potentialCases
+    );
+
+    List<Case> secureCases = decision.getRecords();
 
     Response finalResponse = new Response();
     finalResponse.accessibleCases = secureCases;
