@@ -1,0 +1,24 @@
+<template>
+  <lightning-card title="Custom Spinner Demo" icon-name="custom:custom14">
+    <div class="slds-m-around_medium">
+      <p class="slds-m-bottom_medium">
+        Click the button below to simulate a server call. The custom spinner
+        will display for 3 seconds.
+      </p>
+      <lightning-button
+        label="Run Process"
+        variant="brand"
+        onclick={handleProcessClick}
+        disabled={showSpinner}
+      >
+      </lightning-button>
+    </div>
+  </lightning-card>
+
+  <!-- 
+      USAGE:
+      1. Add the component to the template: <c-custom-spinner>
+      2. Bind its isLoading attribute to a property in your JS: is-loading={showSpinner}
+    -->
+  <c-custom-spinner is-loading={showSpinner}></c-custom-spinner>
+</template>
