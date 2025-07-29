@@ -1,0 +1,66 @@
+/*main overlay that covers the entire screen*/
+.overlay {
+  position: fixed; /* Sits on top of the page content */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 9999; /* Ensures it's on top of other elements */
+  display: flex; /* Uses Flexbox to center the content */
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-logo {
+  width: 60px;
+  height: 60px;
+  z-index: 10; /* Ensures logo is on top of the circle */
+  animation: pulse 2s ease-in-out infinite; /* Apply the pulsing animation */
+}
+
+.loading-circle {
+  position: absolute;
+  width: 120px; /* Should be larger than the logo */
+  height: 120px;
+  border-radius: 50%; /* Makes the div a circle */
+  border: 5px solid rgba(255, 255, 255, 0.3); /* The light grey track of the circle */
+  border-top-color: #ffffff; /* The "head" of the spinner that moves */
+  animation: spin 1s linear infinite; /* Apply the spinning animation */
+}
+
+/* 
+*  Animation Keyframes
+*/
+
+/* circle spinning */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* logo pulse */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
